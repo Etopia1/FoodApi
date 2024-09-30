@@ -10,7 +10,7 @@ const productRouter = require("./routers/productRouter");
 const merchantRouter = require("./routers/merchantRouter");
 const fileUploader = require("express-fileupload");
 const cartRouter = require("./routers/cartRouter");
-// const keepServerAlive = require(`./helpers/keepServerAlive`)
+const keepServerAlive = require(`./helpers/keepServerAlive`)
 
 const app = express();
 app.use(express.json());
@@ -29,7 +29,7 @@ app.use("/api/v1", merchantRouter);
 app.use("/api/v1", productRouter);
 app.use("/api/v1", cartRouter);
 
-// keepServerAlive();
+keepServerAlive();
 
 
 app.get('/1', (req, res) => {
