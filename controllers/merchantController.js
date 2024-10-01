@@ -44,7 +44,8 @@ const signUp = async (req, res) => {
 
             const userToken = jwt.sign(
                 { id: user._id, email: user.email },
-                process.env.JWT_SECRET,
+                process.env.JWT_SECRET
+                
                 { expiresIn: "10 Minutes" }
             );
             const verifyLink = `${req.protocol}://${req.get(
@@ -139,7 +140,7 @@ const userLogin = async (req, res) => {
                 userId: existingUser._id,
                 email: existingUser.email,
             },
-            process.env.jwt_secret,
+            process.env.JWT_SECRET,
             { expiresIn: "3h" }
         );
 
@@ -490,4 +491,4 @@ const deleteMerchant = async (req, res) => {
 
 module.exports ={
     signUp, verifyEmail, resendVerificationEmail, userLogin, resetPassword, forgotPassword, changePassword, updateMerchant, getOneMerchant, getAllMerchants, merchantLogOut, deleteMerchant
-}
+}                                                                                                                                                                                                                                      a
