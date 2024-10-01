@@ -20,7 +20,7 @@ const authorize = async (req, res, next) => {
             });
         }
 
-        const decodedToken = jwt.verify(token, process.env.jwt_secret);
+        const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 
         const user = await merchModel.findById(decodedToken.userId);
 
@@ -67,7 +67,7 @@ const authenticate = async (req, res, next) => {
 			return res.status(401).json({ message: 'Action requires sign-in. Please log in to continue.' });
 		}
 
-		const decodedToken = jwt.verify(token, process.env.jwt_secret);
+		const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 		const user = await userModel.findById(decodedToken.userId);
 		if (!user) {
 			return res.status(404).json({ message: 'Authentication Failed: User not found' });
@@ -100,7 +100,7 @@ const isSuperAdmin = async (req, res, next) => {
 			return res.status(401).json({ message: 'Action requires sign-in. Please log in to continue.' });
 		}
 
-		const decodedToken = jwt.verify(token, process.env.jwt_secret);
+		const decodedToken = jwt.verify(token, process.env.JWT_SECRET);
 		const user = await userModel.findById(decodedToken.userId);
 		if (!user) {
 			return res.status(404).json({ message: 'Authentication Failed: User not found' });
