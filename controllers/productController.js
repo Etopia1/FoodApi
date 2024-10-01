@@ -2,7 +2,7 @@ const merchantModel = require(`../models/merchantModel`);
 const productModel = require(`../models/productModel`);
 const userModel = require(`../models/userModel`)
 const cloudinary = require(`../utils/cloudinary`);
-const Category = require(`../models/categoriModel`);
+const category = require(`../models/categoriModel`);
 const mongoose = require(`mongoose`)
 const fs = require(`fs`);
 const path = require('path');
@@ -34,9 +34,9 @@ const createProduct = async (req, res) => {
     const { categoryId } = req.params;
     if (!mongoose.Types.ObjectId.isValid(categoryId)) {
         return res.status(400).json({ message: 'Invalid ID format.' });}
-    const Categoryall = await Category.findById(categoryId);
+    const categoryall = await category.findById(categoryId);
 
-    if (Categoryall) {
+    if (categoryall) {
       return res.status(401).json("Category is  currently online.");
     }
 
@@ -49,7 +49,7 @@ const createProduct = async (req, res) => {
 
     const newProduct = await productModel.create({
       merchant: merchantId,
-      Category: categoryId,
+      category: categoryId,
       productName,
       merchantName: merchantStore.businessName,
       merchantDescription: merchantStore.description,

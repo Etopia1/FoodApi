@@ -120,7 +120,7 @@ const userLogin = async (req, res) => {
         }
         const existingUser = await merchModel.findOne({
             email: email.toLowerCase()
-        });
+        }).populate('Categories');
         if (!existingUser) {
             return res.status(404).json({
                 message: "User not found."}); }
