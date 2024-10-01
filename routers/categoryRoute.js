@@ -7,6 +7,7 @@ const {
     deleteCategory
 } = require('../controllers/categoryController');
 const router = express.Router();
+const { authenticate} = require("../middlewares/Auth")
 
 // Public Routes
 router.get('category/', getAllCategories); // Get all categories (public)

@@ -42,9 +42,10 @@ const signUp = async (req, res) => {
                 description
             });
 
-            const userToken = jwt.sign(
-                { id: user._id, email: user.email },
-                process.env.JWT_SECRET
+            const userToken = await jwt.sign(
+                { id: user._id, 
+                email: user.email },
+                process.env.JWT_SECRET,
                 
                 { expiresIn: "10 Minutes" }
             );
@@ -489,6 +490,6 @@ const deleteMerchant = async (req, res) => {
   };
   
 
-module.exports ={
+module.exports = {
     signUp, verifyEmail, resendVerificationEmail, userLogin, resetPassword, forgotPassword, changePassword, updateMerchant, getOneMerchant, getAllMerchants, merchantLogOut, deleteMerchant
-}                                                                                                                                                                                                                                      a
+}                                                                                                                                                                                                                                      
