@@ -3,7 +3,7 @@ const { authorize, authenticate} = require(`../middlewares/Auth`)
 const { createProduct, getOneProduct, getAllForOneStore, getAllProducts, getTopProducts, updateProduct, deleteProduct, searchProducts, saveProductForLater } = require("../controllers/productController")
 const router = express.Router()
 
-router.post(`/create-product/:merchantId/:categoryId`, authorize, createProduct)
+router.post(`/create-product/:merchantId/:categoryId`, createProduct)
 
 router.get(`/getoneproduct/:productId`, getOneProduct)
 
